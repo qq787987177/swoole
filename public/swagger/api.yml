@@ -1,0 +1,167 @@
+swagger: '2.0'
+info:
+  title: APP 接口文档
+  description: ""
+schemes:
+  - http
+paths:
+  /login.json:
+    post:
+      tags:
+        - 用户
+      summary: 登录
+      parameters:
+        - $ref: '#/parameters/F'
+        - $ref: '#/parameters/V'
+        - $ref: '#/parameters/noncestr'
+        - $ref: '#/parameters/sign'
+        - name: account
+          in: formData
+          description: 用户名
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: 密码
+          required: true
+          type: string
+      responses:
+        '200':
+          description: '[SUCCESS]请求成功'
+          schema:
+            required:
+              - code
+              - msg
+              - data
+            properties:
+              code:
+                type: string
+                example: SUCCESS
+              msg:
+                type: string
+                example: SUCCESS
+              data:
+                description: 用户信息
+                type: object
+                example:
+                  - user_name: ceshi
+                    nick_name: ceshi
+                    face_img: https://dfdfdsfds
+                    auth: fsdfsd
+                    phone: 18256065285
+            type: object
+  /register.json:
+    post:
+      tags:
+        - 用户
+      summary: 注册
+      parameters:
+        - $ref: '#/parameters/F'
+        - $ref: '#/parameters/V'
+        - $ref: '#/parameters/noncestr'
+        - $ref: '#/parameters/sign'
+        - name: account
+          in: formData
+          description: 用户名
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: 密码
+          required: true
+          type: string
+      responses:
+        '200':
+          description: '[SUCCESS]请求成功'
+          schema:
+            required:
+              - code
+              - msg
+              - data
+            properties:
+              code:
+                type: string
+                example: SUCCESS
+              msg:
+                type: string
+                example: SUCCESS
+              data:
+                description: 用户信息
+                type: object
+                example:
+                  - user_name: ceshi
+                    nick_name: ceshi
+                    face_img: https://dfdfdsfds
+                    auth: fsdfsd
+                    phone: 18256065285
+            type: object
+  ApiResponse:
+    title: 接口返回对象
+    description: 接口返回对象
+    properties:
+      code:
+        description: 状态码
+        type: string
+        example: SUCCESS
+      msg:
+        description: 接口返回描述
+        type: string
+        example: SUCCESS
+    type: object
+parameters:
+  F:
+    name: F
+    in: query
+    description: 渠道来源
+    required: true
+    type: array
+    items:
+      type: string
+      default: ios
+      enum:
+        - ios
+        - android
+  V:
+    name: V
+    in: query
+    description: 接口版本号
+    required: true
+    type: string
+    default: 1.0.0
+  noncestr:
+    name: noncestr
+    in: query
+    description: 随机数
+    required: true
+    type: string
+    default: 00b1cba8f96a5d72
+  sign:
+    name: sign
+    in: query
+    description: 签名
+    required: true
+    type: string
+    default: debug
+  size:
+    name: size
+    in: query
+    description: 每页数量
+    required: false
+    type: integer
+    default: '5'
+  auth:
+    name: auth
+    in: query
+    description: 用户凭证
+    required: true
+    type: string
+    default: ZGMxk0zqrJt4WKk5Q
+  page:
+    name: page
+    in: query
+    description: 页码
+    type: integer
+    default: 1
+tags:
+  - name: 用户
+    description: 用户相关
