@@ -9,9 +9,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use swoole_websocket_server;
 
-class AppTestCommand extends Command
+class ServerStartCommand extends Command
 {
-    protected static $defaultName = 'app:test';
+    protected static $defaultName = 'websocket:start';
 
     protected function configure()
     {
