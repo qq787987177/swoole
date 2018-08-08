@@ -2,16 +2,30 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class UserController
+ * @Route("/user")
+ *
+ * @package App\Controller
+ */
 class UserController extends Controller
 {
     /**
-     * @Route("/swagger")
+     * login
+     * @Route("/login")
+     *
+     * @author yangyi
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
      */
-    public function index()
-    {
-        return $this->render('user/swagger.html.twig', ['yml_url' => '/swagger/api.yml']);
+    public function login(Request $request){
+        return new JsonResponse('123');
     }
 }
