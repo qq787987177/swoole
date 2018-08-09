@@ -25,6 +25,15 @@ server {
 }
 ``````
 
+fpm配置
+
+``````
+cd /etc/php/7.1/fpm/pool.d
+vi www.conf
+修改listen = 9000
+修改listen.allowed_clients = 127.0.0.1
+``````
+
 swoole安装
 
 ``````
@@ -37,11 +46,14 @@ phpize
 make 
 sudo make install
 配置php.ini加入
+/php_shmop
 extension=swoole.so
 ``````
 
 以下可能用到
 ``````
+//查看端口占用
+lsof -i
 //修改owner
 pecl config-get php_dir
 sudo chown <username> <php_dir>
